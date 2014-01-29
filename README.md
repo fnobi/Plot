@@ -1,7 +1,7 @@
 Plot
 ======
 
-The best project ever.
+async task manager.
 
 ## install
 
@@ -16,7 +16,7 @@ git clone git://github.com/fujisawa-shin/Plot.git
 ```
 
 ## usage
-```
+```javascript
 // =================================== //
 //  simple async process
 // =================================== //
@@ -37,7 +37,7 @@ var plot = new Plot([function (next) {
 
 ```
 
-```
+```javascript
 // =================================== //
 //  write plot & parallel process
 // =================================== //
