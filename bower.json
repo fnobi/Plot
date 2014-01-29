@@ -1,6 +1,6 @@
 {
   "name": "Plot",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "main": "js/Plot.js",
   "devDependencies": {
     "ejs-head-modules": "~1.0.5",
