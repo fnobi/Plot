@@ -52,18 +52,18 @@ var plot = new Plot([
     'render'
 ]);
 
-plot.cut('load_posts', function (next) {
+plot.scene('load_posts', function (next) {
     $.getJson('/api/posts', function (json) {
         posts = json;
         next();    
     });
 });
 
-plot.cut('check_posts', function (next) {
+plot.scene('check_posts', function (next) {
     $.each(posts, function (index, post) {
         var imageUrl = post.image_url;
     
-        plot.cut('preload_image', function (next) {
+        plot.scene('preload_image', function (next) {
             var image = new Image();
             image.src = imageUrl;
             image.onload = next;
@@ -71,7 +71,7 @@ plot.cut('check_posts', function (next) {
     });
 });
 
-plot.cut('render', function (next) {
+plot.scene('render', function (next) {
     $.each(posts, function (index, post) {
         $body.append([
             '<div class="post">',

@@ -28,7 +28,7 @@ Plot.prototype.play = function (sequence) {
         var sceneName;
         if (typeof scene != 'string') {
             sceneName = ['scene', +(new Date())].join('_');
-            self.cut(sceneName, scene);
+            self.scene(sceneName, scene);
         } else {
             sceneName = scene;
         }
@@ -64,7 +64,7 @@ Plot.prototype.playScene = function (sceneName, callback) {
     }
 };
 
-Plot.prototype.cut = function (sceneName, cut) {
+Plot.prototype.scene = function (sceneName, cut) {
     var scene = this.scenes[sceneName];
     if (!scene) {
         scene = [];

@@ -33,24 +33,24 @@ describe('plot', function () {
 
         var hoge = null;
 
-        plot.cut('set_a', function (next) {
+        plot.scene('set_a', function (next) {
             hoge = 'a';
             next();
         });
 
-        plot.cut('set_b', function (next) {
+        plot.scene('set_b', function (next) {
             assert.equal(hoge, 'a');
             hoge = 'b';
             next();
         });
 
-        plot.cut('set_c', function (next) {
+        plot.scene('set_c', function (next) {
             assert.equal(hoge, 'b');
             hoge = 'c';
             next();
         });
 
-        plot.cut('end', function (next) {
+        plot.scene('end', function (next) {
             assert.equal(hoge, 'c');
             done();
         });
@@ -67,17 +67,17 @@ describe('plot', function () {
         var hoge = null;
         var moge = null;
 
-        plot.cut('set_value', function (next) {
+        plot.scene('set_value', function (next) {
             hoge = 'a';
             next();
         });
 
-        plot.cut('set_value', function (next) {
+        plot.scene('set_value', function (next) {
             moge = 'b';
             next();
         });
 
-        plot.cut('end', function (next) {
+        plot.scene('end', function (next) {
             assert.equal(hoge, 'a');
             assert.equal(moge, 'b');
             done();
