@@ -81,4 +81,6 @@ plot.cut('render', function (next) {
         ].join('\n'));
     });
 });
+
+plot.play();
 ```
