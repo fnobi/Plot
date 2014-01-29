@@ -84,4 +84,51 @@ describe('plot', function () {
 
         plot.play(done);
     });
+
+    it('nest plot', function (done) {
+        var hoge = '';
+        var moge = '';
+
+        var subPlot1 = new Plot([function (next) {
+            hoge += 'a';
+            next();
+        }, function (next) {
+            hoge += 'b';
+            next();
+        }]);
+
+        var subPlot2 = new Plot([function (next) {
+            moge += 'c';
+            next();
+        }, function (next) {
+            moge += 'd';
+            next();
+        }]);
+
+
+        var plot = new Plot([
+            subPlot1,
+            function (next) {
+                assert.equal(hoge, 'ab');
+                next();
+            },
+            subPlot2,
+            function (next) {
+                assert.equal(moge, 'cd');
+                next();
+            }
+        ]).play(done);
+    });
+
+
 });
+
+
+
+
+
+
+
+
+
+

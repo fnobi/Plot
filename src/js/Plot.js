@@ -55,6 +55,11 @@ Plot.prototype.playScene = function (sceneName, callback) {
 
     for (var i = 0; i < cutCount; i++) {
         (function (cut) {
+            if (cut instanceof Plot) {
+                cut.play(done);
+                return;
+            }
+
             setTimeout(function () {
                 cut.apply(self, [done]);
             });
