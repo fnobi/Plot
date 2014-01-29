@@ -7,17 +7,15 @@ function Plot (sequence) {
     }
 }
 
-Plot.prototype.play = function (sequence) {
-    if (sequence) {
-        this.setSequence(sequence);
-    }
+Plot.prototype.play = function (callback) {
+    callback = callback || function () {};
 
-    sequence = this.sequence || [];
+    var sequence = this.sequence || [];
 
     var self = this;
     (function exec (index) {
         if (!sequence[index]) {
-            return;
+            return callback();
         }
 
         function done () {

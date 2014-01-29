@@ -2,25 +2,24 @@ var assert = chai.assert;
 
 describe('plot', function () {
     it('play functions in order', function (done) {
-        var plot = new Plot();
         var array = [];
 
-        plot.play([function (next) {
+        new Plot([function (next) {
             array.push('1');
-            setTimeout(next, 20);
+            setTimeout(next);
         }, function (next) {
             array.push('2');
-            setTimeout(next, 20);
+            setTimeout(next);
         }, function (next) {
             array.push('3');
-            setTimeout(next, 20);
+            setTimeout(next);
         }, function (next) {
             array.push('4');
-            setTimeout(next, 20);
+            setTimeout(next);
         }, function (next) {
             assert.equal(array.join(''), '1234');
-            done();
-        }]);
+            next();
+        }]).play(done);
     });
 
     it('write scenes and asign', function (done) {
@@ -52,10 +51,10 @@ describe('plot', function () {
 
         plot.scene('end', function (next) {
             assert.equal(hoge, 'c');
-            done();
+            next();
         });
 
-        plot.play();
+        plot.play(done);
     });
 
     it('parallel', function (done) {
@@ -80,9 +79,9 @@ describe('plot', function () {
         plot.scene('end', function (next) {
             assert.equal(hoge, 'a');
             assert.equal(moge, 'b');
-            done();
+            next();
         });
 
-        plot.play();
+        plot.play(done);
     });
 });
